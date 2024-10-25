@@ -6,31 +6,37 @@ import jakarta.persistence.Embeddable;
 @Embeddable
 public class FinalizouCurso {
 
-    private boolean finalizoucurso;
+    private Boolean finalizoucurso;
 
-    // Construtor padrão necessário para o JPA
     protected FinalizouCurso() {
     }
 
-    // Construtor com valor inicial
-    public FinalizouCurso(boolean finalizoucurso) {
+    public FinalizouCurso(Boolean finalizoucurso) {
+        if (finalizoucurso == null) {
+            throw new IllegalArgumentException("O valor de finalizoucurso não pode ser nulo.");
+        }
         this.finalizoucurso = finalizoucurso;
     }
 
-    public boolean getFinalizoucurso() {
+    public Boolean getFinalizoucurso() {
         return finalizoucurso;
     }
 
-    // Sobrescreva equals para garantir comparação por valor
+    public void setFinalizoucurso(Boolean finalizoucurso) {
+        if (finalizoucurso == null) {
+            throw new IllegalArgumentException("O valor de finalizoucurso não pode ser nulo.");
+        }
+        this.finalizoucurso = finalizoucurso;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         FinalizouCurso that = (FinalizouCurso) o;
-        return finalizoucurso == that.finalizoucurso;
+        return Objects.equals(finalizoucurso, that.finalizoucurso);
     }
 
-    // Sobrescreva hashCode para garantir que objetos iguais tenham o mesmo código hash
     @Override
     public int hashCode() {
         return Objects.hash(finalizoucurso);
@@ -41,4 +47,5 @@ public class FinalizouCurso {
         return Boolean.toString(finalizoucurso);
     }
 }
+
 
