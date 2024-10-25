@@ -1,4 +1,4 @@
-package com.cursos_online.model;
+package com.cursos_online.entity;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -9,7 +9,9 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "tb_usuario")
 public class Usuario {
-	private Long
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)  
+    private Long id;
 	private String nome;
 	@Embedded
 	private Ra ra;
@@ -18,10 +20,20 @@ public class Usuario {
 	private int numeroCursosDisponiveis;
 	private Curso curso;
 	
-	public Usuario(String nome) {
+	public Usuario(String nome, Ra ra, Email email) {
 		this.nome = nome;
+		this.ra = ra;
+		this.email = email;
 	}
 	
+	public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+    
 	public String getNome() {
 		return nome;
 	}
@@ -64,7 +76,7 @@ public class Usuario {
 	}	
 	
 	public void disponibilizaCursoPorMedia() {
-		if(this.curso.getMedia() >= 7 && this.curso.getFinalizouCurso() == true) {
+		if(this.curso.getMedia() >= 7 && this.curso.getFinalizouCurso().getFinalizoucurso() == true) {
 			this.numeroCursosDisponiveis += 3;
 		}
 	}
