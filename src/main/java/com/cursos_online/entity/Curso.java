@@ -1,5 +1,4 @@
 package com.cursos_online.entity;
-import jakarta.persistence.Embedded;
 
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
@@ -23,10 +22,12 @@ public class Curso {
 		@Embedded
 		private FinalizouCurso finalizouCurso;
 	
-	public Curso(String nomeCurso, float media, FinalizouCurso finalizouCurso){
+	public Curso(String nomeCurso, float media, FinalizouCurso finalizouCurso, Professor professor, Materia materia){
 		this.nomeCurso = nomeCurso;
 		this.media = media;
 		this.finalizouCurso =  finalizouCurso;
+		this.professor = professor;
+		this.materia = materia;
 	}
 	 
 	public Long getId() {
