@@ -14,10 +14,14 @@ public class Curso {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)  
     private Long id;
-	private String nomeCurso;
-	private float media;
-	@Embedded
-	private FinalizouCurso finalizouCurso;
+		private String nomeCurso;
+		private float media;
+		@Embedded
+		private Professor professor;
+		@Embedded
+		private Materia materia;
+		@Embedded
+		private FinalizouCurso finalizouCurso;
 	
 	public Curso(String nomeCurso, float media, FinalizouCurso finalizouCurso){
 		this.nomeCurso = nomeCurso;
